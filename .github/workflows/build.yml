@@ -34,6 +34,11 @@ jobs:
           mkdir -p app/src/main/res/values
           mkdir -p app/src/main/res/xml
 
+          cat << 'EOF' > gradle.properties
+          android.useAndroidX=true
+          android.nonTransitiveRClass=true
+          EOF
+
           cat << 'EOF' > settings.gradle
           pluginManagement {
               repositories {
@@ -619,4 +624,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create v1.0.0 RutaTransporteGAO.apk --title "RUTA TRANSPORTE GAO v1.0" --notes "Tu app personalizada lista para instalar." || true
+          gh release create v1.0.1 RutaTransporteGAO.apk --title "RUTA TRANSPORTE GAO v1.0.1" --notes "Tu app personalizada lista para instalar." || true
